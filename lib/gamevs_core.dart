@@ -6,3 +6,4 @@ export './domain/entity/game.dart';
 export './domain/entity/stage.dart';
 export './domain/entity/user.dart';
 export './domain/entity/item.dart';
+export './l10n/generated/l10n.dart';

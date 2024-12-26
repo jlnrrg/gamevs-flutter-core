@@ -1,0 +1,8 @@
+arb-dir: lib/l10n
+output-dir: lib/l10n/generated
+template-arb-file: l10n_en.arb
+output-localization-file: l10n.dart
+output-class: L
+synthetic-package: false
+nullable-getter: false
+#untranslated-messages-file: l10n_errors.txt

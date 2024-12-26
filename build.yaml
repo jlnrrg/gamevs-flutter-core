@@ -1,0 +1,6 @@
+global_options:
+  dart_mappable_builder:
+    options:
+      caseStyle: camelCase
+      enumCaseStyle: camelCase
+      discriminatorKey: type
