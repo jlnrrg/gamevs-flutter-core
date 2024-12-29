@@ -5,5 +5,5 @@ abstract class FlexibleEnum {
   core.Game get game;
 
   /// dart_mapper method for enums
-  String toValue();
+  String toPrimitive();
 }

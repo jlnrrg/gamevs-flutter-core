@@ -1,11 +1,15 @@
+import 'package:dart_mappable/dart_mappable.dart';
 import 'package:uuid/uuid.dart';
 
-class User {
+part 'user.mapper.dart';
+
+@MappableClass()
+class User with UserMappable {
   const User({
     required this.id,
     this.firstName,
     this.lastName,
-    required this.email,
+    this.email,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -13,7 +17,7 @@ class User {
   final UuidValue id;
   final String? firstName;
   final String? lastName;
-  final String email;
+  final String? email;
   final DateTime createdAt;
   final DateTime updatedAt;
 }
