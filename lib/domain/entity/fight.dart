@@ -1,3 +1,4 @@
+import 'package:dart_mappable/dart_mappable.dart';
 import 'package:gamevs_core/domain/entity/character.dart';
 import 'package:gamevs_core/domain/entity/game.dart';
 import 'package:gamevs_core/domain/entity/settings.dart';
@@ -5,7 +6,10 @@ import 'package:gamevs_core/domain/entity/stage.dart';
 import 'package:gamevs_core/domain/entity/user.dart';
 import 'package:uuid/uuid.dart';
 
-class Fight {
+part 'fight.mapper.dart';
+
+@MappableClass()
+class Fight with FightMappable {
   const Fight({
     required this.id,
     required this.game,
@@ -27,7 +31,8 @@ class Fight {
   final DateTime updatedAt;
 }
 
-class FightResult {
+@MappableClass()
+class FightResult with FightResultMappable {
   const FightResult({
     required this.id,
     required this.fight,
@@ -53,7 +58,8 @@ class FightResult {
   final DateTime updatedAt;
 }
 
-class FightKill {
+@MappableClass()
+class FightKill with FightKillMappable {
   const FightKill({
     required this.id,
     this.killer,
