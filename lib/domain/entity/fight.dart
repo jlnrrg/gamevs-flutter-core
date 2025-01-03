@@ -16,6 +16,7 @@ class Fight with FightMappable {
     this.players = const [],
     this.stages = const [],
     this.result,
+    this.kills,
     this.settings,
     required this.createdAt,
     required this.updatedAt,
@@ -26,6 +27,7 @@ class Fight with FightMappable {
   final List<FightPlayer> players;
   final List<Stage> stages;
   final List<FightResult>? result;
+  final List<FightKill>? kills;
   final Settings? settings;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -40,7 +42,6 @@ class FightResult with FightResultMappable {
     this.rank,
     this.time,
     this.points,
-    this.kills,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -53,7 +54,6 @@ class FightResult with FightResultMappable {
   final int? rank;
   final Duration? time;
   final int? points;
-  final List<FightKill>? kills;
   final DateTime createdAt;
   final DateTime updatedAt;
 }
