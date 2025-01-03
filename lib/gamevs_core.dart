@@ -7,4 +7,6 @@ export './domain/entity/stage.dart';
 export './domain/entity/user.dart';
 export './domain/entity/item.dart';
 export './domain/entity/settings.dart';
+export './domain/failure/api_failure.dart';
+export './domain/repository/fight_repository.dart';
 export './l10n/generated/l10n.dart';
