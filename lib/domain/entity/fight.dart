@@ -37,7 +37,6 @@ class Fight with FightMappable {
 class FightResult with FightResultMappable {
   const FightResult({
     required this.id,
-    required this.fight,
     required this.player,
     this.rank,
     this.time,
@@ -47,7 +46,6 @@ class FightResult with FightResultMappable {
   });
 
   final UuidValue id;
-  final Fight fight;
   final FightPlayer player;
 
   // result

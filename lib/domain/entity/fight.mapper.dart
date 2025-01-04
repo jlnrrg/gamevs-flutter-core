@@ -221,7 +221,6 @@ class FightResultMapper extends ClassMapperBase<FightResult> {
   static FightResultMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = FightResultMapper._());
-      FightMapper.ensureInitialized();
       FightPlayerMapper.ensureInitialized();
     }
     return _instance!;
@@ -232,8 +231,6 @@ class FightResultMapper extends ClassMapperBase<FightResult> {
 
   static UuidValue _$id(FightResult v) => v.id;
   static const Field<FightResult, UuidValue> _f$id = Field('id', _$id);
-  static Fight _$fight(FightResult v) => v.fight;
-  static const Field<FightResult, Fight> _f$fight = Field('fight', _$fight);
   static FightPlayer _$player(FightResult v) => v.player;
   static const Field<FightResult, FightPlayer> _f$player =
       Field('player', _$player);
@@ -256,7 +253,6 @@ class FightResultMapper extends ClassMapperBase<FightResult> {
   @override
   final MappableFields<FightResult> fields = const {
     #id: _f$id,
-    #fight: _f$fight,
     #player: _f$player,
     #rank: _f$rank,
     #time: _f$time,
@@ -268,7 +264,6 @@ class FightResultMapper extends ClassMapperBase<FightResult> {
   static FightResult _instantiate(DecodingData data) {
     return FightResult(
         id: data.dec(_f$id),
-        fight: data.dec(_f$fight),
         player: data.dec(_f$player),
         rank: data.dec(_f$rank),
         time: data.dec(_f$time),
@@ -328,11 +323,9 @@ extension FightResultValueCopy<$R, $Out>
 
 abstract class FightResultCopyWith<$R, $In extends FightResult, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  FightCopyWith<$R, Fight, Fight> get fight;
   FightPlayerCopyWith<$R, FightPlayer, FightPlayer> get player;
   $R call(
       {UuidValue? id,
-      Fight? fight,
       FightPlayer? player,
       int? rank,
       Duration? time,
@@ -351,15 +344,11 @@ class _FightResultCopyWithImpl<$R, $Out>
   late final ClassMapperBase<FightResult> $mapper =
       FightResultMapper.ensureInitialized();
   @override
-  FightCopyWith<$R, Fight, Fight> get fight =>
-      $value.fight.copyWith.$chain((v) => call(fight: v));
-  @override
   FightPlayerCopyWith<$R, FightPlayer, FightPlayer> get player =>
       $value.player.copyWith.$chain((v) => call(player: v));
   @override
   $R call(
           {UuidValue? id,
-          Fight? fight,
           FightPlayer? player,
           Object? rank = $none,
           Object? time = $none,
@@ -368,7 +357,6 @@ class _FightResultCopyWithImpl<$R, $Out>
           DateTime? updatedAt}) =>
       $apply(FieldCopyWithData({
         if (id != null) #id: id,
-        if (fight != null) #fight: fight,
         if (player != null) #player: player,
         if (rank != $none) #rank: rank,
         if (time != $none) #time: time,
@@ -379,7 +367,6 @@ class _FightResultCopyWithImpl<$R, $Out>
   @override
   FightResult $make(CopyWithData data) => FightResult(
       id: data.get(#id, or: $value.id),
-      fight: data.get(#fight, or: $value.fight),
       player: data.get(#player, or: $value.player),
       rank: data.get(#rank, or: $value.rank),
       time: data.get(#time, or: $value.time),
