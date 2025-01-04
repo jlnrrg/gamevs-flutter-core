@@ -28,29 +28,19 @@ class FightPlayerMapper extends ClassMapperBase<FightPlayer> {
   static List<Character> _$character(FightPlayer v) => v.character;
   static const Field<FightPlayer, List<Character>> _f$character =
       Field('character', _$character, opt: true, def: const []);
-  static DateTime _$createdAt(FightPlayer v) => v.createdAt;
-  static const Field<FightPlayer, DateTime> _f$createdAt =
-      Field('createdAt', _$createdAt);
-  static DateTime _$updatedAt(FightPlayer v) => v.updatedAt;
-  static const Field<FightPlayer, DateTime> _f$updatedAt =
-      Field('updatedAt', _$updatedAt);
 
   @override
   final MappableFields<FightPlayer> fields = const {
     #id: _f$id,
     #user: _f$user,
     #character: _f$character,
-    #createdAt: _f$createdAt,
-    #updatedAt: _f$updatedAt,
   };
 
   static FightPlayer _instantiate(DecodingData data) {
     return FightPlayer(
         id: data.dec(_f$id),
         user: data.dec(_f$user),
-        character: data.dec(_f$character),
-        createdAt: data.dec(_f$createdAt),
-        updatedAt: data.dec(_f$updatedAt));
+        character: data.dec(_f$character));
   }
 
   @override
@@ -107,12 +97,7 @@ abstract class FightPlayerCopyWith<$R, $In extends FightPlayer, $Out>
   UserCopyWith<$R, User, User> get user;
   ListCopyWith<$R, Character, ObjectCopyWith<$R, Character, Character>>
       get character;
-  $R call(
-      {UuidValue? id,
-      User? user,
-      List<Character>? character,
-      DateTime? createdAt,
-      DateTime? updatedAt});
+  $R call({UuidValue? id, User? user, List<Character>? character});
   FightPlayerCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -132,26 +117,17 @@ class _FightPlayerCopyWithImpl<$R, $Out>
       get character => ListCopyWith($value.character,
           (v, t) => ObjectCopyWith(v, $identity, t), (v) => call(character: v));
   @override
-  $R call(
-          {UuidValue? id,
-          User? user,
-          List<Character>? character,
-          DateTime? createdAt,
-          DateTime? updatedAt}) =>
+  $R call({UuidValue? id, User? user, List<Character>? character}) =>
       $apply(FieldCopyWithData({
         if (id != null) #id: id,
         if (user != null) #user: user,
-        if (character != null) #character: character,
-        if (createdAt != null) #createdAt: createdAt,
-        if (updatedAt != null) #updatedAt: updatedAt
+        if (character != null) #character: character
       }));
   @override
   FightPlayer $make(CopyWithData data) => FightPlayer(
       id: data.get(#id, or: $value.id),
       user: data.get(#user, or: $value.user),
-      character: data.get(#character, or: $value.character),
-      createdAt: data.get(#createdAt, or: $value.createdAt),
-      updatedAt: data.get(#updatedAt, or: $value.updatedAt));
+      character: data.get(#character, or: $value.character));
 
   @override
   FightPlayerCopyWith<$R2, FightPlayer, $Out2> $chain<$R2, $Out2>(

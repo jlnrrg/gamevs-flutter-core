@@ -8,19 +8,12 @@ part 'character.mapper.dart';
 
 @MappableClass()
 class FightPlayer with FightPlayerMappable {
-  const FightPlayer({
-    required this.id,
-    required this.user,
-    this.character = const [],
-    required this.createdAt,
-    required this.updatedAt,
-  });
+  const FightPlayer(
+      {required this.id, required this.user, this.character = const []});
 
   final UuidValue id;
   final User user;
   final List<Character> character;
-  final DateTime createdAt;
-  final DateTime updatedAt;
 }
 
 abstract class Character implements FlexibleEnum {
