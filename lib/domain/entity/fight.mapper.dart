@@ -17,6 +17,7 @@ class FightMapper extends ClassMapperBase<Fight> {
       FightPlayerMapper.ensureInitialized();
       FightResultMapper.ensureInitialized();
       FightKillMapper.ensureInitialized();
+      RulesMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -40,9 +41,9 @@ class FightMapper extends ClassMapperBase<Fight> {
   static List<FightKill>? _$kills(Fight v) => v.kills;
   static const Field<Fight, List<FightKill>> _f$kills =
       Field('kills', _$kills, opt: true);
-  static Settings? _$settings(Fight v) => v.settings;
-  static const Field<Fight, Settings> _f$settings =
-      Field('settings', _$settings, opt: true);
+  static Rules? _$rules(Fight v) => v.rules;
+  static const Field<Fight, Rules> _f$rules =
+      Field('rules', _$rules, opt: true);
   static DateTime _$createdAt(Fight v) => v.createdAt;
   static const Field<Fight, DateTime> _f$createdAt =
       Field('createdAt', _$createdAt);
@@ -58,7 +59,7 @@ class FightMapper extends ClassMapperBase<Fight> {
     #stages: _f$stages,
     #result: _f$result,
     #kills: _f$kills,
-    #settings: _f$settings,
+    #rules: _f$rules,
     #createdAt: _f$createdAt,
     #updatedAt: _f$updatedAt,
   };
@@ -71,7 +72,7 @@ class FightMapper extends ClassMapperBase<Fight> {
         stages: data.dec(_f$stages),
         result: data.dec(_f$result),
         kills: data.dec(_f$kills),
-        settings: data.dec(_f$settings),
+        rules: data.dec(_f$rules),
         createdAt: data.dec(_f$createdAt),
         updatedAt: data.dec(_f$updatedAt));
   }
@@ -129,6 +130,7 @@ abstract class FightCopyWith<$R, $In extends Fight, $Out>
       FightResultCopyWith<$R, FightResult, FightResult>>? get result;
   ListCopyWith<$R, FightKill, FightKillCopyWith<$R, FightKill, FightKill>>?
       get kills;
+  RulesCopyWith<$R, Rules, Rules>? get rules;
   $R call(
       {UuidValue? id,
       Game? game,
@@ -136,7 +138,7 @@ abstract class FightCopyWith<$R, $In extends Fight, $Out>
       List<Stage>? stages,
       List<FightResult>? result,
       List<FightKill>? kills,
-      Settings? settings,
+      Rules? rules,
       DateTime? createdAt,
       DateTime? updatedAt});
   FightCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
@@ -171,6 +173,9 @@ class _FightCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Fight, $Out>
               (v) => call(kills: v))
           : null;
   @override
+  RulesCopyWith<$R, Rules, Rules>? get rules =>
+      $value.rules?.copyWith.$chain((v) => call(rules: v));
+  @override
   $R call(
           {UuidValue? id,
           Game? game,
@@ -178,7 +183,7 @@ class _FightCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Fight, $Out>
           List<Stage>? stages,
           Object? result = $none,
           Object? kills = $none,
-          Object? settings = $none,
+          Object? rules = $none,
           DateTime? createdAt,
           DateTime? updatedAt}) =>
       $apply(FieldCopyWithData({
@@ -188,7 +193,7 @@ class _FightCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Fight, $Out>
         if (stages != null) #stages: stages,
         if (result != $none) #result: result,
         if (kills != $none) #kills: kills,
-        if (settings != $none) #settings: settings,
+        if (rules != $none) #rules: rules,
         if (createdAt != null) #createdAt: createdAt,
         if (updatedAt != null) #updatedAt: updatedAt
       }));
@@ -200,7 +205,7 @@ class _FightCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Fight, $Out>
       stages: data.get(#stages, or: $value.stages),
       result: data.get(#result, or: $value.result),
       kills: data.get(#kills, or: $value.kills),
-      settings: data.get(#settings, or: $value.settings),
+      rules: data.get(#rules, or: $value.rules),
       createdAt: data.get(#createdAt, or: $value.createdAt),
       updatedAt: data.get(#updatedAt, or: $value.updatedAt));
 

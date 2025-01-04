@@ -1,7 +1,7 @@
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:gamevs_core/domain/entity/character.dart';
 import 'package:gamevs_core/domain/entity/game.dart';
-import 'package:gamevs_core/domain/entity/settings.dart';
+import 'package:gamevs_core/domain/entity/rules.dart';
 import 'package:gamevs_core/domain/entity/stage.dart';
 import 'package:gamevs_core/domain/entity/user.dart';
 import 'package:uuid/uuid.dart';
@@ -17,7 +17,7 @@ class Fight with FightMappable {
     this.stages = const [],
     this.result,
     this.kills,
-    this.settings,
+    this.rules,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -28,7 +28,7 @@ class Fight with FightMappable {
   final List<Stage> stages;
   final List<FightResult>? result;
   final List<FightKill>? kills;
-  final Settings? settings;
+  final Rules? rules;
   final DateTime createdAt;
   final DateTime updatedAt;
 }

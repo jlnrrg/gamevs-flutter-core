@@ -1,8 +1,12 @@
+import 'package:dart_mappable/dart_mappable.dart';
 import 'package:gamevs_core/gamevs_core.dart';
 import 'package:uuid/uuid.dart';
 
-class Settings {
-  const Settings({
+part 'rules.mapper.dart';
+
+@MappableClass()
+class Rules with RulesMappable {
+  const Rules({
     required this.id,
     required this.enabledItems,
     required this.allowedCharacters,

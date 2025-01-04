@@ -11,8 +11,8 @@ abstract class IFightRepository {
   TaskOption<ApiFailure> deleteFight(UuidValue fightId);
 
   // Watch Simple
-  TaskEither<ApiFailure, Stream<Either<ApiFailure, core.Settings>>>
-      watchSettings(UuidValue fightId);
+  TaskEither<ApiFailure, Stream<Either<ApiFailure, core.Rules>>> watchRules(
+      UuidValue fightId);
   TaskEither<ApiFailure, Stream<Either<ApiFailure, List<core.FightPlayer>>>>
       watchPlayers(UuidValue fightId);
   TaskEither<ApiFailure, Stream<Either<ApiFailure, List<core.Stage>>>>
@@ -31,8 +31,7 @@ abstract class IFightRepository {
   */
 
   // Update
-  TaskOption<ApiFailure> updateSettings(
-      UuidValue fightId, core.Settings settings);
+  TaskOption<ApiFailure> updateRules(UuidValue fightId, core.Rules rules);
   TaskOption<ApiFailure> updatePlayers(
       UuidValue fightId, List<core.FightPlayer> players);
   TaskOption<ApiFailure> updateStages(
