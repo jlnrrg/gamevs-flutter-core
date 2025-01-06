@@ -5,10 +5,10 @@ import 'package:uuid/uuid.dart';
 
 abstract class IFightRepository {
   // Create
-  TaskOption<ApiFailure> createFight(core.Fight fight);
+  TaskEither<ApiFailure, Unit> createFight(core.Fight fight);
 
   // Delete
-  TaskOption<ApiFailure> deleteFight(UuidValue fightId);
+  TaskEither<ApiFailure, Unit> deleteFight(UuidValue fightId);
 
   // Watch Simple
   TaskEither<ApiFailure, Stream<Either<ApiFailure, core.Rules>>> watchRules(
@@ -31,13 +31,13 @@ abstract class IFightRepository {
   */
 
   // Update
-  TaskOption<ApiFailure> updateRules(UuidValue fightId, core.Rules rules);
-  TaskOption<ApiFailure> updatePlayers(
+  TaskEither<ApiFailure, Unit> updateRules(UuidValue fightId, core.Rules rules);
+  TaskEither<ApiFailure, Unit> updatePlayers(
       UuidValue fightId, List<core.FightPlayer> players);
-  TaskOption<ApiFailure> updateStages(
+  TaskEither<ApiFailure, Unit> updateStages(
       UuidValue fightId, List<core.Stage> stages);
-  TaskOption<ApiFailure> updateKills(
+  TaskEither<ApiFailure, Unit> updateKills(
       UuidValue fightId, List<core.FightKill> kills);
-  TaskOption<ApiFailure> updateResults(
+  TaskEither<ApiFailure, Unit> updateResults(
       UuidValue fightId, List<core.FightResult> results);
 }
