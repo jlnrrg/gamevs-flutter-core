@@ -14,6 +14,8 @@ class Rules with RulesMappable {
     required this.gameMode,
     this.lifes,
     this.time,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
   final UuidValue id;
@@ -23,4 +25,6 @@ class Rules with RulesMappable {
   final String gameMode;
   final int? lifes;
   final Duration? time;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 }

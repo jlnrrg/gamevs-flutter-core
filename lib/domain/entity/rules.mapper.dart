@@ -38,6 +38,12 @@ class RulesMapper extends ClassMapperBase<Rules> {
   static Duration? _$time(Rules v) => v.time;
   static const Field<Rules, Duration> _f$time =
       Field('time', _$time, opt: true);
+  static DateTime _$createdAt(Rules v) => v.createdAt;
+  static const Field<Rules, DateTime> _f$createdAt =
+      Field('createdAt', _$createdAt);
+  static DateTime _$updatedAt(Rules v) => v.updatedAt;
+  static const Field<Rules, DateTime> _f$updatedAt =
+      Field('updatedAt', _$updatedAt);
 
   @override
   final MappableFields<Rules> fields = const {
@@ -48,6 +54,8 @@ class RulesMapper extends ClassMapperBase<Rules> {
     #gameMode: _f$gameMode,
     #lifes: _f$lifes,
     #time: _f$time,
+    #createdAt: _f$createdAt,
+    #updatedAt: _f$updatedAt,
   };
 
   static Rules _instantiate(DecodingData data) {
@@ -58,7 +66,9 @@ class RulesMapper extends ClassMapperBase<Rules> {
         allowedStages: data.dec(_f$allowedStages),
         gameMode: data.dec(_f$gameMode),
         lifes: data.dec(_f$lifes),
-        time: data.dec(_f$time));
+        time: data.dec(_f$time),
+        createdAt: data.dec(_f$createdAt),
+        updatedAt: data.dec(_f$updatedAt));
   }
 
   @override
@@ -118,7 +128,9 @@ abstract class RulesCopyWith<$R, $In extends Rules, $Out>
       List<Stage>? allowedStages,
       String? gameMode,
       int? lifes,
-      Duration? time});
+      Duration? time,
+      DateTime? createdAt,
+      DateTime? updatedAt});
   RulesCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -154,7 +166,9 @@ class _RulesCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Rules, $Out>
           List<Stage>? allowedStages,
           String? gameMode,
           Object? lifes = $none,
-          Object? time = $none}) =>
+          Object? time = $none,
+          DateTime? createdAt,
+          DateTime? updatedAt}) =>
       $apply(FieldCopyWithData({
         if (id != null) #id: id,
         if (enabledItems != null) #enabledItems: enabledItems,
@@ -162,7 +176,9 @@ class _RulesCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Rules, $Out>
         if (allowedStages != null) #allowedStages: allowedStages,
         if (gameMode != null) #gameMode: gameMode,
         if (lifes != $none) #lifes: lifes,
-        if (time != $none) #time: time
+        if (time != $none) #time: time,
+        if (createdAt != null) #createdAt: createdAt,
+        if (updatedAt != null) #updatedAt: updatedAt
       }));
   @override
   Rules $make(CopyWithData data) => Rules(
@@ -173,7 +189,9 @@ class _RulesCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Rules, $Out>
       allowedStages: data.get(#allowedStages, or: $value.allowedStages),
       gameMode: data.get(#gameMode, or: $value.gameMode),
       lifes: data.get(#lifes, or: $value.lifes),
-      time: data.get(#time, or: $value.time));
+      time: data.get(#time, or: $value.time),
+      createdAt: data.get(#createdAt, or: $value.createdAt),
+      updatedAt: data.get(#updatedAt, or: $value.updatedAt));
 
   @override
   RulesCopyWith<$R2, Rules, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
