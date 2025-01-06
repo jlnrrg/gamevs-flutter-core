@@ -1,4 +1,6 @@
 import 'package:dart_mappable/dart_mappable.dart';
+import 'package:flutter/material.dart';
+import 'package:gamevs_core/domain/entity/misc.dart';
 import 'package:gamevs_core/gamevs_core.dart';
 import 'package:uuid/uuid.dart';
 
@@ -22,9 +24,13 @@ class Rules with RulesMappable {
   final List<Item> enabledItems;
   final List<Character> allowedCharacters;
   final List<Stage> allowedStages;
-  final String gameMode;
+  final GameMode gameMode;
   final int? lifes;
   final Duration? time;
   final DateTime createdAt;
   final DateTime updatedAt;
+}
+
+abstract class GameMode implements FlexibleEnum {
+  String toName(BuildContext context);
 }

@@ -31,8 +31,9 @@ class RulesMapper extends ClassMapperBase<Rules> {
   static List<Stage> _$allowedStages(Rules v) => v.allowedStages;
   static const Field<Rules, List<Stage>> _f$allowedStages =
       Field('allowedStages', _$allowedStages);
-  static String _$gameMode(Rules v) => v.gameMode;
-  static const Field<Rules, String> _f$gameMode = Field('gameMode', _$gameMode);
+  static GameMode _$gameMode(Rules v) => v.gameMode;
+  static const Field<Rules, GameMode> _f$gameMode =
+      Field('gameMode', _$gameMode);
   static int? _$lifes(Rules v) => v.lifes;
   static const Field<Rules, int> _f$lifes = Field('lifes', _$lifes, opt: true);
   static Duration? _$time(Rules v) => v.time;
@@ -126,7 +127,7 @@ abstract class RulesCopyWith<$R, $In extends Rules, $Out>
       List<Item>? enabledItems,
       List<Character>? allowedCharacters,
       List<Stage>? allowedStages,
-      String? gameMode,
+      GameMode? gameMode,
       int? lifes,
       Duration? time,
       DateTime? createdAt,
@@ -164,7 +165,7 @@ class _RulesCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Rules, $Out>
           List<Item>? enabledItems,
           List<Character>? allowedCharacters,
           List<Stage>? allowedStages,
-          String? gameMode,
+          GameMode? gameMode,
           Object? lifes = $none,
           Object? time = $none,
           DateTime? createdAt,
