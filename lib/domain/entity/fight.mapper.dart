@@ -41,9 +41,8 @@ class FightMapper extends ClassMapperBase<Fight> {
   static List<FightKill>? _$kills(Fight v) => v.kills;
   static const Field<Fight, List<FightKill>> _f$kills =
       Field('kills', _$kills, opt: true);
-  static Rules? _$rules(Fight v) => v.rules;
-  static const Field<Fight, Rules> _f$rules =
-      Field('rules', _$rules, opt: true);
+  static Rules _$rules(Fight v) => v.rules;
+  static const Field<Fight, Rules> _f$rules = Field('rules', _$rules);
   static DateTime _$createdAt(Fight v) => v.createdAt;
   static const Field<Fight, DateTime> _f$createdAt =
       Field('createdAt', _$createdAt);
@@ -130,7 +129,7 @@ abstract class FightCopyWith<$R, $In extends Fight, $Out>
       FightResultCopyWith<$R, FightResult, FightResult>>? get result;
   ListCopyWith<$R, FightKill, FightKillCopyWith<$R, FightKill, FightKill>>?
       get kills;
-  RulesCopyWith<$R, Rules, Rules>? get rules;
+  RulesCopyWith<$R, Rules, Rules> get rules;
   $R call(
       {UuidValue? id,
       Game? game,
@@ -173,8 +172,8 @@ class _FightCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Fight, $Out>
               (v) => call(kills: v))
           : null;
   @override
-  RulesCopyWith<$R, Rules, Rules>? get rules =>
-      $value.rules?.copyWith.$chain((v) => call(rules: v));
+  RulesCopyWith<$R, Rules, Rules> get rules =>
+      $value.rules.copyWith.$chain((v) => call(rules: v));
   @override
   $R call(
           {UuidValue? id,
@@ -183,7 +182,7 @@ class _FightCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Fight, $Out>
           List<Stage>? stages,
           Object? result = $none,
           Object? kills = $none,
-          Object? rules = $none,
+          Rules? rules,
           DateTime? createdAt,
           DateTime? updatedAt}) =>
       $apply(FieldCopyWithData({
@@ -193,7 +192,7 @@ class _FightCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Fight, $Out>
         if (stages != null) #stages: stages,
         if (result != $none) #result: result,
         if (kills != $none) #kills: kills,
-        if (rules != $none) #rules: rules,
+        if (rules != null) #rules: rules,
         if (createdAt != null) #createdAt: createdAt,
         if (updatedAt != null) #updatedAt: updatedAt
       }));

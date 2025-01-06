@@ -17,7 +17,7 @@ class Fight with FightMappable {
     this.stages = const [],
     this.result,
     this.kills,
-    this.rules,
+    required this.rules,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -28,7 +28,7 @@ class Fight with FightMappable {
   final List<Stage> stages;
   final List<FightResult>? result;
   final List<FightKill>? kills;
-  final Rules? rules;
+  final Rules rules;
   final DateTime createdAt;
   final DateTime updatedAt;
 }
@@ -53,6 +53,7 @@ class FightResult with FightResultMappable {
   final Duration? time;
   final int? points;
   final DateTime createdAt;
+  @MappableField()
   final DateTime updatedAt;
 }
 
