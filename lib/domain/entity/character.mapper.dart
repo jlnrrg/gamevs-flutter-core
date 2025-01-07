@@ -25,8 +25,8 @@ class FightPlayerMapper extends ClassMapperBase<FightPlayer> {
   static const Field<FightPlayer, UuidValue> _f$id = Field('id', _$id);
   static User _$user(FightPlayer v) => v.user;
   static const Field<FightPlayer, User> _f$user = Field('user', _$user);
-  static List<Character> _$character(FightPlayer v) => v.character;
-  static const Field<FightPlayer, List<Character>> _f$character =
+  static List<Character<Enum>> _$character(FightPlayer v) => v.character;
+  static const Field<FightPlayer, List<Character<Enum>>> _f$character =
       Field('character', _$character, opt: true, def: const []);
 
   @override
@@ -95,9 +95,9 @@ extension FightPlayerValueCopy<$R, $Out>
 abstract class FightPlayerCopyWith<$R, $In extends FightPlayer, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   UserCopyWith<$R, User, User> get user;
-  ListCopyWith<$R, Character, ObjectCopyWith<$R, Character, Character>>
-      get character;
-  $R call({UuidValue? id, User? user, List<Character>? character});
+  ListCopyWith<$R, Character<Enum>,
+      ObjectCopyWith<$R, Character<Enum>, Character<Enum>>> get character;
+  $R call({UuidValue? id, User? user, List<Character<Enum>>? character});
   FightPlayerCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -113,11 +113,12 @@ class _FightPlayerCopyWithImpl<$R, $Out>
   UserCopyWith<$R, User, User> get user =>
       $value.user.copyWith.$chain((v) => call(user: v));
   @override
-  ListCopyWith<$R, Character, ObjectCopyWith<$R, Character, Character>>
+  ListCopyWith<$R, Character<Enum>,
+          ObjectCopyWith<$R, Character<Enum>, Character<Enum>>>
       get character => ListCopyWith($value.character,
           (v, t) => ObjectCopyWith(v, $identity, t), (v) => call(character: v));
   @override
-  $R call({UuidValue? id, User? user, List<Character>? character}) =>
+  $R call({UuidValue? id, User? user, List<Character<Enum>>? character}) =>
       $apply(FieldCopyWithData({
         if (id != null) #id: id,
         if (user != null) #user: user,

@@ -14,9 +14,6 @@ class FightMapper extends ClassMapperBase<Fight> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = FightMapper._());
       GameMapper.ensureInitialized();
-      FightPlayerMapper.ensureInitialized();
-      FightResultMapper.ensureInitialized();
-      FightKillMapper.ensureInitialized();
       RulesMapper.ensureInitialized();
     }
     return _instance!;
@@ -29,18 +26,6 @@ class FightMapper extends ClassMapperBase<Fight> {
   static const Field<Fight, UuidValue> _f$id = Field('id', _$id);
   static Game _$game(Fight v) => v.game;
   static const Field<Fight, Game> _f$game = Field('game', _$game);
-  static List<FightPlayer> _$players(Fight v) => v.players;
-  static const Field<Fight, List<FightPlayer>> _f$players =
-      Field('players', _$players, opt: true, def: const []);
-  static List<Stage> _$stages(Fight v) => v.stages;
-  static const Field<Fight, List<Stage>> _f$stages =
-      Field('stages', _$stages, opt: true, def: const []);
-  static List<FightResult>? _$result(Fight v) => v.result;
-  static const Field<Fight, List<FightResult>> _f$result =
-      Field('result', _$result, opt: true);
-  static List<FightKill>? _$kills(Fight v) => v.kills;
-  static const Field<Fight, List<FightKill>> _f$kills =
-      Field('kills', _$kills, opt: true);
   static Rules _$rules(Fight v) => v.rules;
   static const Field<Fight, Rules> _f$rules = Field('rules', _$rules);
   static DateTime _$createdAt(Fight v) => v.createdAt;
@@ -54,10 +39,6 @@ class FightMapper extends ClassMapperBase<Fight> {
   final MappableFields<Fight> fields = const {
     #id: _f$id,
     #game: _f$game,
-    #players: _f$players,
-    #stages: _f$stages,
-    #result: _f$result,
-    #kills: _f$kills,
     #rules: _f$rules,
     #createdAt: _f$createdAt,
     #updatedAt: _f$updatedAt,
@@ -67,10 +48,6 @@ class FightMapper extends ClassMapperBase<Fight> {
     return Fight(
         id: data.dec(_f$id),
         game: data.dec(_f$game),
-        players: data.dec(_f$players),
-        stages: data.dec(_f$stages),
-        result: data.dec(_f$result),
-        kills: data.dec(_f$kills),
         rules: data.dec(_f$rules),
         createdAt: data.dec(_f$createdAt),
         updatedAt: data.dec(_f$updatedAt));
@@ -112,21 +89,10 @@ extension FightValueCopy<$R, $Out> on ObjectCopyWith<$R, Fight, $Out> {
 
 abstract class FightCopyWith<$R, $In extends Fight, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  ListCopyWith<$R, FightPlayer,
-      FightPlayerCopyWith<$R, FightPlayer, FightPlayer>> get players;
-  ListCopyWith<$R, Stage, ObjectCopyWith<$R, Stage, Stage>> get stages;
-  ListCopyWith<$R, FightResult,
-      FightResultCopyWith<$R, FightResult, FightResult>>? get result;
-  ListCopyWith<$R, FightKill, FightKillCopyWith<$R, FightKill, FightKill>>?
-      get kills;
   RulesCopyWith<$R, Rules, Rules> get rules;
   $R call(
       {UuidValue? id,
       Game? game,
-      List<FightPlayer>? players,
-      List<Stage>? stages,
-      List<FightResult>? result,
-      List<FightKill>? kills,
       Rules? rules,
       DateTime? createdAt,
       DateTime? updatedAt});
@@ -140,48 +106,18 @@ class _FightCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Fight, $Out>
   @override
   late final ClassMapperBase<Fight> $mapper = FightMapper.ensureInitialized();
   @override
-  ListCopyWith<$R, FightPlayer,
-          FightPlayerCopyWith<$R, FightPlayer, FightPlayer>>
-      get players => ListCopyWith($value.players,
-          (v, t) => v.copyWith.$chain(t), (v) => call(players: v));
-  @override
-  ListCopyWith<$R, Stage, ObjectCopyWith<$R, Stage, Stage>> get stages =>
-      ListCopyWith($value.stages, (v, t) => ObjectCopyWith(v, $identity, t),
-          (v) => call(stages: v));
-  @override
-  ListCopyWith<$R, FightResult,
-          FightResultCopyWith<$R, FightResult, FightResult>>?
-      get result => $value.result != null
-          ? ListCopyWith($value.result!, (v, t) => v.copyWith.$chain(t),
-              (v) => call(result: v))
-          : null;
-  @override
-  ListCopyWith<$R, FightKill, FightKillCopyWith<$R, FightKill, FightKill>>?
-      get kills => $value.kills != null
-          ? ListCopyWith($value.kills!, (v, t) => v.copyWith.$chain(t),
-              (v) => call(kills: v))
-          : null;
-  @override
   RulesCopyWith<$R, Rules, Rules> get rules =>
       $value.rules.copyWith.$chain((v) => call(rules: v));
   @override
   $R call(
           {UuidValue? id,
           Game? game,
-          List<FightPlayer>? players,
-          List<Stage>? stages,
-          Object? result = $none,
-          Object? kills = $none,
           Rules? rules,
           DateTime? createdAt,
           DateTime? updatedAt}) =>
       $apply(FieldCopyWithData({
         if (id != null) #id: id,
         if (game != null) #game: game,
-        if (players != null) #players: players,
-        if (stages != null) #stages: stages,
-        if (result != $none) #result: result,
-        if (kills != $none) #kills: kills,
         if (rules != null) #rules: rules,
         if (createdAt != null) #createdAt: createdAt,
         if (updatedAt != null) #updatedAt: updatedAt
@@ -190,10 +126,6 @@ class _FightCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Fight, $Out>
   Fight $make(CopyWithData data) => Fight(
       id: data.get(#id, or: $value.id),
       game: data.get(#game, or: $value.game),
-      players: data.get(#players, or: $value.players),
-      stages: data.get(#stages, or: $value.stages),
-      result: data.get(#result, or: $value.result),
-      kills: data.get(#kills, or: $value.kills),
       rules: data.get(#rules, or: $value.rules),
       createdAt: data.get(#createdAt, or: $value.createdAt),
       updatedAt: data.get(#updatedAt, or: $value.updatedAt));
@@ -290,17 +222,6 @@ mixin FightResultMappable {
   String toString() {
     return FightResultMapper.ensureInitialized()
         .stringifyValue(this as FightResult);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return FightResultMapper.ensureInitialized()
-        .equalsValue(this as FightResult, other);
-  }
-
-  @override
-  int get hashCode {
-    return FightResultMapper.ensureInitialized().hashValue(this as FightResult);
   }
 }
 
@@ -445,17 +366,6 @@ mixin FightKillMappable {
   String toString() {
     return FightKillMapper.ensureInitialized()
         .stringifyValue(this as FightKill);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return FightKillMapper.ensureInitialized()
-        .equalsValue(this as FightKill, other);
-  }
-
-  @override
-  int get hashCode {
-    return FightKillMapper.ensureInitialized().hashValue(this as FightKill);
   }
 }
 

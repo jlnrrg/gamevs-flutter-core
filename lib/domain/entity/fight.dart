@@ -14,10 +14,6 @@ class Fight extends Equatable with FightMappable {
   const Fight({
     required this.id,
     required this.game,
-    this.players = const [],
-    this.stages = const [],
-    this.result,
-    this.kills,
     required this.rules,
     required this.createdAt,
     required this.updatedAt,
@@ -25,10 +21,6 @@ class Fight extends Equatable with FightMappable {
 
   final UuidValue id;
   final Game game;
-  final List<FightPlayer> players;
-  final List<Stage> stages;
-  final List<FightResult>? result;
-  final List<FightKill>? kills;
   final Rules rules;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -37,10 +29,6 @@ class Fight extends Equatable with FightMappable {
   List<Object?> get props => [
         id,
         game,
-        [...players]..sort(),
-        [...stages]..sort(),
-        [...result ?? []]..sort(),
-        [...kills ?? []]..sort(),
         rules,
         createdAt,
       ];

@@ -22,17 +22,18 @@ class RulesMapper extends ClassMapperBase<Rules> {
 
   static UuidValue _$id(Rules v) => v.id;
   static const Field<Rules, UuidValue> _f$id = Field('id', _$id);
-  static List<Item> _$enabledItems(Rules v) => v.enabledItems;
-  static const Field<Rules, List<Item>> _f$enabledItems =
+  static List<Item<Enum>> _$enabledItems(Rules v) => v.enabledItems;
+  static const Field<Rules, List<Item<Enum>>> _f$enabledItems =
       Field('enabledItems', _$enabledItems);
-  static List<Character> _$allowedCharacters(Rules v) => v.allowedCharacters;
-  static const Field<Rules, List<Character>> _f$allowedCharacters =
+  static List<Character<Enum>> _$allowedCharacters(Rules v) =>
+      v.allowedCharacters;
+  static const Field<Rules, List<Character<Enum>>> _f$allowedCharacters =
       Field('allowedCharacters', _$allowedCharacters);
-  static List<Stage> _$allowedStages(Rules v) => v.allowedStages;
-  static const Field<Rules, List<Stage>> _f$allowedStages =
+  static List<Stage<Enum>> _$allowedStages(Rules v) => v.allowedStages;
+  static const Field<Rules, List<Stage<Enum>>> _f$allowedStages =
       Field('allowedStages', _$allowedStages);
-  static GameMode _$gameMode(Rules v) => v.gameMode;
-  static const Field<Rules, GameMode> _f$gameMode =
+  static GameMode<Enum> _$gameMode(Rules v) => v.gameMode;
+  static const Field<Rules, GameMode<Enum>> _f$gameMode =
       Field('gameMode', _$gameMode);
   static int? _$lifes(Rules v) => v.lifes;
   static const Field<Rules, int> _f$lifes = Field('lifes', _$lifes, opt: true);
@@ -108,16 +109,19 @@ extension RulesValueCopy<$R, $Out> on ObjectCopyWith<$R, Rules, $Out> {
 
 abstract class RulesCopyWith<$R, $In extends Rules, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  ListCopyWith<$R, Item, ObjectCopyWith<$R, Item, Item>> get enabledItems;
-  ListCopyWith<$R, Character, ObjectCopyWith<$R, Character, Character>>
+  ListCopyWith<$R, Item<Enum>, ObjectCopyWith<$R, Item<Enum>, Item<Enum>>>
+      get enabledItems;
+  ListCopyWith<$R, Character<Enum>,
+          ObjectCopyWith<$R, Character<Enum>, Character<Enum>>>
       get allowedCharacters;
-  ListCopyWith<$R, Stage, ObjectCopyWith<$R, Stage, Stage>> get allowedStages;
+  ListCopyWith<$R, Stage<Enum>, ObjectCopyWith<$R, Stage<Enum>, Stage<Enum>>>
+      get allowedStages;
   $R call(
       {UuidValue? id,
-      List<Item>? enabledItems,
-      List<Character>? allowedCharacters,
-      List<Stage>? allowedStages,
-      GameMode? gameMode,
+      List<Item<Enum>>? enabledItems,
+      List<Character<Enum>>? allowedCharacters,
+      List<Stage<Enum>>? allowedStages,
+      GameMode<Enum>? gameMode,
       int? lifes,
       Duration? time,
       DateTime? createdAt,
@@ -132,30 +136,31 @@ class _RulesCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Rules, $Out>
   @override
   late final ClassMapperBase<Rules> $mapper = RulesMapper.ensureInitialized();
   @override
-  ListCopyWith<$R, Item, ObjectCopyWith<$R, Item, Item>> get enabledItems =>
-      ListCopyWith(
+  ListCopyWith<$R, Item<Enum>, ObjectCopyWith<$R, Item<Enum>, Item<Enum>>>
+      get enabledItems => ListCopyWith(
           $value.enabledItems,
           (v, t) => ObjectCopyWith(v, $identity, t),
           (v) => call(enabledItems: v));
   @override
-  ListCopyWith<$R, Character, ObjectCopyWith<$R, Character, Character>>
+  ListCopyWith<$R, Character<Enum>,
+          ObjectCopyWith<$R, Character<Enum>, Character<Enum>>>
       get allowedCharacters => ListCopyWith(
           $value.allowedCharacters,
           (v, t) => ObjectCopyWith(v, $identity, t),
           (v) => call(allowedCharacters: v));
   @override
-  ListCopyWith<$R, Stage, ObjectCopyWith<$R, Stage, Stage>> get allowedStages =>
-      ListCopyWith(
+  ListCopyWith<$R, Stage<Enum>, ObjectCopyWith<$R, Stage<Enum>, Stage<Enum>>>
+      get allowedStages => ListCopyWith(
           $value.allowedStages,
           (v, t) => ObjectCopyWith(v, $identity, t),
           (v) => call(allowedStages: v));
   @override
   $R call(
           {UuidValue? id,
-          List<Item>? enabledItems,
-          List<Character>? allowedCharacters,
-          List<Stage>? allowedStages,
-          GameMode? gameMode,
+          List<Item<Enum>>? enabledItems,
+          List<Character<Enum>>? allowedCharacters,
+          List<Stage<Enum>>? allowedStages,
+          GameMode<Enum>? gameMode,
           Object? lifes = $none,
           Object? time = $none,
           DateTime? createdAt,
