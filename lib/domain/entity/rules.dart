@@ -1,4 +1,5 @@
 import 'package:dart_mappable/dart_mappable.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:gamevs_core/domain/entity/misc.dart';
 import 'package:gamevs_core/gamevs_core.dart';
@@ -6,8 +7,8 @@ import 'package:uuid/uuid.dart';
 
 part 'rules.mapper.dart';
 
-@MappableClass()
-class Rules with RulesMappable {
+@MappableClass(generateMethods: GenerateMethods.all & ~GenerateMethods.equals)
+class Rules extends Equatable with RulesMappable {
   const Rules({
     required this.id,
     required this.enabledItems,
@@ -29,8 +30,21 @@ class Rules with RulesMappable {
   final Duration? time;
   final DateTime createdAt;
   final DateTime updatedAt;
+
+  @override
+  List<Object?> get props => [
+        id,
+        // TODO(jln): check for performance
+        [...enabledItems]..sort(),
+        [...allowedCharacters]..sort(),
+        [...allowedStages]..sort(),
+        gameMode,
+        lifes,
+        time,
+        createdAt
+      ];
 }
 
-abstract class GameMode implements FlexibleEnum {
+abstract class GameMode<T extends Enum> implements FlexibleEnum<T> {
   String toName(BuildContext context);
 }

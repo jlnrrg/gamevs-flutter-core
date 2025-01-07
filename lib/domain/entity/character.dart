@@ -16,7 +16,7 @@ class FightPlayer with FightPlayerMappable {
   final List<Character> character;
 }
 
-abstract class Character implements FlexibleEnum {
+abstract class Character<T extends Enum> implements FlexibleEnum<T> {
   bool get isDlc;
 
   String toName(BuildContext context);

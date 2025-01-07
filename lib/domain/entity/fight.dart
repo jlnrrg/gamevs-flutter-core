@@ -1,4 +1,5 @@
 import 'package:dart_mappable/dart_mappable.dart';
+import 'package:equatable/equatable.dart';
 import 'package:gamevs_core/domain/entity/character.dart';
 import 'package:gamevs_core/domain/entity/game.dart';
 import 'package:gamevs_core/domain/entity/rules.dart';
@@ -8,8 +9,8 @@ import 'package:uuid/uuid.dart';
 
 part 'fight.mapper.dart';
 
-@MappableClass()
-class Fight with FightMappable {
+@MappableClass(generateMethods: GenerateMethods.all & ~GenerateMethods.equals)
+class Fight extends Equatable with FightMappable {
   const Fight({
     required this.id,
     required this.game,
@@ -31,10 +32,22 @@ class Fight with FightMappable {
   final Rules rules;
   final DateTime createdAt;
   final DateTime updatedAt;
+
+  @override
+  List<Object?> get props => [
+        id,
+        game,
+        [...players]..sort(),
+        [...stages]..sort(),
+        [...result ?? []]..sort(),
+        [...kills ?? []]..sort(),
+        rules,
+        createdAt,
+      ];
 }
 
-@MappableClass()
-class FightResult with FightResultMappable {
+@MappableClass(generateMethods: GenerateMethods.all & ~GenerateMethods.equals)
+class FightResult extends Equatable with FightResultMappable {
   const FightResult({
     required this.id,
     required this.player,
@@ -53,12 +66,14 @@ class FightResult with FightResultMappable {
   final Duration? time;
   final int? points;
   final DateTime createdAt;
-  @MappableField()
   final DateTime updatedAt;
+
+  @override
+  List<Object?> get props => [id, player, rank, time, points, createdAt];
 }
 
-@MappableClass()
-class FightKill with FightKillMappable {
+@MappableClass(generateMethods: GenerateMethods.all & ~GenerateMethods.equals)
+class FightKill extends Equatable with FightKillMappable {
   const FightKill({
     required this.id,
     this.killer,
@@ -72,4 +87,7 @@ class FightKill with FightKillMappable {
   final User victim;
   final DateTime createdAt;
   final DateTime updatedAt;
+
+  @override
+  List<Object?> get props => [id, killer, victim, createdAt];
 }

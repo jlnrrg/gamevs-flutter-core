@@ -103,16 +103,6 @@ mixin FightMappable {
   String toString() {
     return FightMapper.ensureInitialized().stringifyValue(this as Fight);
   }
-
-  @override
-  bool operator ==(Object other) {
-    return FightMapper.ensureInitialized().equalsValue(this as Fight, other);
-  }
-
-  @override
-  int get hashCode {
-    return FightMapper.ensureInitialized().hashValue(this as Fight);
-  }
 }
 
 extension FightValueCopy<$R, $Out> on ObjectCopyWith<$R, Fight, $Out> {

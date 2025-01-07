@@ -3,7 +3,7 @@ import 'package:gamevs_core/domain/failure/api_failure.dart';
 import 'package:gamevs_core/gamevs_core.dart' as core;
 import 'package:uuid/uuid.dart';
 
-abstract class IFightRepository {
+abstract interface class IFightRepository {
   // Create
   TaskEither<ApiFailure, Unit> createFight(core.Fight fight);
 
