@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:gamevs_core/domain/entity/character.dart';
 import 'package:gamevs_core/domain/entity/game.dart';
 import 'package:gamevs_core/domain/entity/rules.dart';
-import 'package:gamevs_core/domain/entity/stage.dart';
 import 'package:gamevs_core/domain/entity/user.dart';
 import 'package:uuid/uuid.dart';
 
