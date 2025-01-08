@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+.android
 migrate_working_dir/
 
 # IntelliJ related
@@ -29,3 +30,12 @@ migrate_working_dir/
 .flutter-plugins
 .flutter-plugins-dependencies
 build/
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
