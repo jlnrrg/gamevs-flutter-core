@@ -1,6 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:gamevs_core/gamevs_core.dart' as core;
 
-abstract class FlexibleEnum<T extends Enum> implements Comparable<T> {
+abstract class FlexibleEnum<T extends Enum>
+    implements Comparable<T>, EquatableMixin {
   // get the game for the correct enum assignment
   core.Game get game;
 
@@ -8,7 +10,14 @@ abstract class FlexibleEnum<T extends Enum> implements Comparable<T> {
   String toPrimitive();
 }
 
-mixin EnumNameOrdering<T extends Enum> on Enum implements Comparable<T> {
+mixin EnumNameOrdering<T extends Enum> on Enum
+    implements Comparable<T>, EquatableMixin {
   @override
   int compareTo(T other) => name.compareTo(other.name);
+
+  @override
+  List<Object?> get props => [index, name];
+
+  @override
+  bool? get stringify => false;
 }

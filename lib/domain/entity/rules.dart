@@ -1,7 +1,6 @@
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:gamevs_core/domain/entity/misc.dart';
 import 'package:gamevs_core/gamevs_core.dart';
 import 'package:uuid/uuid.dart';
 

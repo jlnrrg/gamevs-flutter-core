@@ -10,4 +10,8 @@ export './domain/entity/rules.dart';
 export './domain/entity/misc.dart';
 export './domain/failure/api_failure.dart';
 export './domain/repository/fight_repository.dart';
+export 'domain/repository/stage_repository.dart';
 export './l10n/generated/l10n.dart';
+export 'state/bloc_state.dart';
+export 'state/stage_bloc.dart';
+export 'state/bloc_observer.dart';

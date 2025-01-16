@@ -22,6 +22,10 @@ class FightPlayer extends Equatable with FightPlayerMappable {
         user,
         [...character]..sort()
       ];
+
+  factory FightPlayer.initial(User user,
+          [List<Character> character = const []]) =>
+      FightPlayer(id: Uuid().v4obj(), user: user, character: character);
 }
 
 abstract class Character<T extends Enum> implements FlexibleEnum<T> {
