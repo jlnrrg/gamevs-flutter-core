@@ -1,7 +1,14 @@
-sealed class ApiFailure {
+import 'package:dart_mappable/dart_mappable.dart';
+
+part 'api_failure.mapper.dart';
+
+@MappableClass()
+sealed class ApiFailure with ApiFailureMappable {
   static ApiFailure fromError(Object, StackTrace) {
+    // TODO(jln): add mapping
     throw UnimplementedError();
   }
 }
 
-class NoDataFailure implements ApiFailure {}
+@MappableClass()
+class NoDataFailure with NoDataFailureMappable implements ApiFailure {}

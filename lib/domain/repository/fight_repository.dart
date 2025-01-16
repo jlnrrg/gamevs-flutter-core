@@ -15,8 +15,6 @@ abstract interface class IFightRepository {
       UuidValue fightId);
   TaskEither<ApiFailure, Stream<Either<ApiFailure, List<core.FightPlayer>>>>
       watchPlayers(UuidValue fightId);
-  TaskEither<ApiFailure, Stream<Either<ApiFailure, List<core.Stage>>>>
-      watchStages(UuidValue fightId);
   TaskEither<ApiFailure, Stream<Either<ApiFailure, List<core.FightKill>>>>
       watchKills(UuidValue fightId);
   TaskEither<ApiFailure, Stream<Either<ApiFailure, List<core.FightResult>>>>
@@ -34,8 +32,6 @@ abstract interface class IFightRepository {
   TaskEither<ApiFailure, Unit> updateRules(UuidValue fightId, core.Rules rules);
   TaskEither<ApiFailure, Unit> updatePlayers(
       UuidValue fightId, List<core.FightPlayer> players);
-  TaskEither<ApiFailure, Unit> updateStages(
-      UuidValue fightId, List<core.Stage> stages);
   TaskEither<ApiFailure, Unit> updateKills(
       UuidValue fightId, List<core.FightKill> kills);
   TaskEither<ApiFailure, Unit> updateResults(
