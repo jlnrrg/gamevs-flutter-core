@@ -68,7 +68,8 @@ class StageBloc extends Bloc<StageEvent, BlocState<List<Stage>>> {
 
     List<Stage<Enum>> newList = [];
     if (exists) {
-      newList = List.of(state.value)..removeWhere((o) => o == event.stage);
+      final list = List.of(state.value)..removeWhere((o) => o == event.stage);
+      newList = list.take(stageLimit ?? list.length).toList();
     } else {
       final limit = stageLimit;
       final listByLimit =
@@ -77,8 +78,12 @@ class StageBloc extends Bloc<StageEvent, BlocState<List<Stage>>> {
     }
     emit(BlocState(value: newList, isOptimisticUI: true));
     final eith = await (exists
-        ? stageRepository.removeStage(fightId, event.stage).run()
-        : stageRepository.addStage(fightId, event.stage).run());
+        ? stageRepository
+            .removeStage(fightId, event.stage, limit: stageLimit)
+            .run()
+        : stageRepository
+            .addStage(fightId, event.stage, limit: stageLimit)
+            .run());
 
     final failure = eith.getLeft().toNullable();
     if (failure != null) {
