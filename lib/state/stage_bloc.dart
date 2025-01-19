@@ -25,7 +25,8 @@ final class StageClear extends StageEvent {}
 typedef _Emitter = Emitter<BlocState<List<Stage<Enum>>>>;
 
 class StageBloc extends Bloc<StageEvent, BlocState<List<Stage>>> {
-  StageBloc({required this.fightId, required this.stageRepository})
+  StageBloc(
+      {required this.fightId, required this.stageRepository, this.stageLimit})
       : super(BlocState(value: <Stage>[])) {
     on<_StageInit>(_init);
     on<_StageDbUpdate>(_stateUpdate);
@@ -37,6 +38,7 @@ class StageBloc extends Bloc<StageEvent, BlocState<List<Stage>>> {
   }
 
   final UuidValue fightId;
+  final int? stageLimit;
   final IStageRepository stageRepository;
   StreamSubscription? stageStreamSubscription;
 
@@ -64,9 +66,15 @@ class StageBloc extends Bloc<StageEvent, BlocState<List<Stage>>> {
     final valueBackup = state.value;
     final exists = state.value.contains(event.stage);
 
-    final newList = exists
-        ? (List.of(state.value)..removeWhere((o) => o == event.stage))
-        : {...state.value, event.stage}.toList();
+    List<Stage<Enum>> newList = [];
+    if (exists) {
+      newList = List.of(state.value)..removeWhere((o) => o == event.stage);
+    } else {
+      final limit = stageLimit;
+      final listByLimit =
+          limit != null ? (state.value..sort()).take(limit - 1) : state.value;
+      newList = {...listByLimit, event.stage}.toList();
+    }
     emit(BlocState(value: newList, isOptimisticUI: true));
     final eith = await (exists
         ? stageRepository.removeStage(fightId, event.stage).run()

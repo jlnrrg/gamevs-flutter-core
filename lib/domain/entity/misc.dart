@@ -16,7 +16,7 @@ mixin EnumNameOrdering<T extends Enum> on Enum
   int compareTo(T other) => name.compareTo(other.name);
 
   @override
-  List<Object?> get props => [index, name];
+  List<Object?> get props => [name];
 
   @override
   bool? get stringify => false;

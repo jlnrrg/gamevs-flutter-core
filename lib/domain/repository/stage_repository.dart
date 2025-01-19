@@ -9,8 +9,12 @@ abstract class IStageRepository {
   TaskEither<core.ApiFailure, Unit> updateStages(
       UuidValue fightId, List<core.Stage> stages);
 
+  /// [limit] is the max size the stage list can take
   TaskEither<core.ApiFailure, Unit> addStage(
-      UuidValue fightId, core.Stage stage);
+    UuidValue fightId,
+    core.Stage stage, [
+    int? limit,
+  ]);
 
   TaskEither<core.ApiFailure, Unit> removeStage(
       UuidValue fightId, core.Stage stage);
