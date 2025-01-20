@@ -8,24 +8,25 @@ import 'package:uuid/uuid.dart';
 part 'character.mapper.dart';
 
 @MappableClass(generateMethods: GenerateMethods.all & ~GenerateMethods.equals)
-class FightPlayer extends Equatable with FightPlayerMappable {
+class FightPlayer extends Equatable
+    with FightPlayerMappable
+    implements Comparable {
   const FightPlayer(
-      {required this.id, required this.user, this.character = const []});
+      {required this.fightId, required this.user, this.character = const []});
 
-  final UuidValue id;
+  final UuidValue fightId;
   final User user;
   final List<Character> character;
 
   @override
   List<Object?> get props => [
-        id,
-        user,
+        fightId,
+        user.id,
         [...character]..sort()
       ];
 
-  factory FightPlayer.initial(User user,
-          [List<Character> character = const []]) =>
-      FightPlayer(id: Uuid().v4obj(), user: user, character: character);
+  @override
+  int compareTo(other) => user.compareTo(other.user);
 }
 
 abstract class Character<T extends Enum> implements FlexibleEnum<T> {

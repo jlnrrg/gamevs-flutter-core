@@ -21,8 +21,9 @@ class FightPlayerMapper extends ClassMapperBase<FightPlayer> {
   @override
   final String id = 'FightPlayer';
 
-  static UuidValue _$id(FightPlayer v) => v.id;
-  static const Field<FightPlayer, UuidValue> _f$id = Field('id', _$id);
+  static UuidValue _$fightId(FightPlayer v) => v.fightId;
+  static const Field<FightPlayer, UuidValue> _f$fightId =
+      Field('fightId', _$fightId);
   static User _$user(FightPlayer v) => v.user;
   static const Field<FightPlayer, User> _f$user = Field('user', _$user);
   static List<Character<Enum>> _$character(FightPlayer v) => v.character;
@@ -31,14 +32,14 @@ class FightPlayerMapper extends ClassMapperBase<FightPlayer> {
 
   @override
   final MappableFields<FightPlayer> fields = const {
-    #id: _f$id,
+    #fightId: _f$fightId,
     #user: _f$user,
     #character: _f$character,
   };
 
   static FightPlayer _instantiate(DecodingData data) {
     return FightPlayer(
-        id: data.dec(_f$id),
+        fightId: data.dec(_f$fightId),
         user: data.dec(_f$user),
         character: data.dec(_f$character));
   }
@@ -86,7 +87,7 @@ abstract class FightPlayerCopyWith<$R, $In extends FightPlayer, $Out>
   UserCopyWith<$R, User, User> get user;
   ListCopyWith<$R, Character<Enum>,
       ObjectCopyWith<$R, Character<Enum>, Character<Enum>>> get character;
-  $R call({UuidValue? id, User? user, List<Character<Enum>>? character});
+  $R call({UuidValue? fightId, User? user, List<Character<Enum>>? character});
   FightPlayerCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -107,15 +108,15 @@ class _FightPlayerCopyWithImpl<$R, $Out>
       get character => ListCopyWith($value.character,
           (v, t) => ObjectCopyWith(v, $identity, t), (v) => call(character: v));
   @override
-  $R call({UuidValue? id, User? user, List<Character<Enum>>? character}) =>
+  $R call({UuidValue? fightId, User? user, List<Character<Enum>>? character}) =>
       $apply(FieldCopyWithData({
-        if (id != null) #id: id,
+        if (fightId != null) #fightId: fightId,
         if (user != null) #user: user,
         if (character != null) #character: character
       }));
   @override
   FightPlayer $make(CopyWithData data) => FightPlayer(
-      id: data.get(#id, or: $value.id),
+      fightId: data.get(#fightId, or: $value.fightId),
       user: data.get(#user, or: $value.user),
       character: data.get(#character, or: $value.character));
 

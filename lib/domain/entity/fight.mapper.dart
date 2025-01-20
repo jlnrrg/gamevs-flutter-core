@@ -142,7 +142,7 @@ class FightResultMapper extends ClassMapperBase<FightResult> {
   static FightResultMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = FightResultMapper._());
-      FightPlayerMapper.ensureInitialized();
+      UserMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -150,11 +150,11 @@ class FightResultMapper extends ClassMapperBase<FightResult> {
   @override
   final String id = 'FightResult';
 
-  static UuidValue _$id(FightResult v) => v.id;
-  static const Field<FightResult, UuidValue> _f$id = Field('id', _$id);
-  static FightPlayer _$player(FightResult v) => v.player;
-  static const Field<FightResult, FightPlayer> _f$player =
-      Field('player', _$player);
+  static UuidValue _$fightId(FightResult v) => v.fightId;
+  static const Field<FightResult, UuidValue> _f$fightId =
+      Field('fightId', _$fightId);
+  static User _$user(FightResult v) => v.user;
+  static const Field<FightResult, User> _f$user = Field('user', _$user);
   static int? _$rank(FightResult v) => v.rank;
   static const Field<FightResult, int> _f$rank =
       Field('rank', _$rank, opt: true);
@@ -173,8 +173,8 @@ class FightResultMapper extends ClassMapperBase<FightResult> {
 
   @override
   final MappableFields<FightResult> fields = const {
-    #id: _f$id,
-    #player: _f$player,
+    #fightId: _f$fightId,
+    #user: _f$user,
     #rank: _f$rank,
     #time: _f$time,
     #points: _f$points,
@@ -184,8 +184,8 @@ class FightResultMapper extends ClassMapperBase<FightResult> {
 
   static FightResult _instantiate(DecodingData data) {
     return FightResult(
-        id: data.dec(_f$id),
-        player: data.dec(_f$player),
+        fightId: data.dec(_f$fightId),
+        user: data.dec(_f$user),
         rank: data.dec(_f$rank),
         time: data.dec(_f$time),
         points: data.dec(_f$points),
@@ -233,10 +233,10 @@ extension FightResultValueCopy<$R, $Out>
 
 abstract class FightResultCopyWith<$R, $In extends FightResult, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  FightPlayerCopyWith<$R, FightPlayer, FightPlayer> get player;
+  UserCopyWith<$R, User, User> get user;
   $R call(
-      {UuidValue? id,
-      FightPlayer? player,
+      {UuidValue? fightId,
+      User? user,
       int? rank,
       Duration? time,
       int? points,
@@ -254,20 +254,20 @@ class _FightResultCopyWithImpl<$R, $Out>
   late final ClassMapperBase<FightResult> $mapper =
       FightResultMapper.ensureInitialized();
   @override
-  FightPlayerCopyWith<$R, FightPlayer, FightPlayer> get player =>
-      $value.player.copyWith.$chain((v) => call(player: v));
+  UserCopyWith<$R, User, User> get user =>
+      $value.user.copyWith.$chain((v) => call(user: v));
   @override
   $R call(
-          {UuidValue? id,
-          FightPlayer? player,
+          {UuidValue? fightId,
+          User? user,
           Object? rank = $none,
           Object? time = $none,
           Object? points = $none,
           DateTime? createdAt,
           DateTime? updatedAt}) =>
       $apply(FieldCopyWithData({
-        if (id != null) #id: id,
-        if (player != null) #player: player,
+        if (fightId != null) #fightId: fightId,
+        if (user != null) #user: user,
         if (rank != $none) #rank: rank,
         if (time != $none) #time: time,
         if (points != $none) #points: points,
@@ -276,8 +276,8 @@ class _FightResultCopyWithImpl<$R, $Out>
       }));
   @override
   FightResult $make(CopyWithData data) => FightResult(
-      id: data.get(#id, or: $value.id),
-      player: data.get(#player, or: $value.player),
+      fightId: data.get(#fightId, or: $value.fightId),
+      user: data.get(#user, or: $value.user),
       rank: data.get(#rank, or: $value.rank),
       time: data.get(#time, or: $value.time),
       points: data.get(#points, or: $value.points),

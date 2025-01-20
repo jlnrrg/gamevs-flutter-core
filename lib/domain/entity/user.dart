@@ -5,7 +5,7 @@ import 'package:uuid/uuid.dart';
 part 'user.mapper.dart';
 
 @MappableClass(generateMethods: GenerateMethods.all & ~GenerateMethods.equals)
-class User extends Equatable with UserMappable {
+class User extends Equatable with UserMappable implements Comparable {
   const User({
     required this.id,
     this.firstName,
@@ -24,4 +24,7 @@ class User extends Equatable with UserMappable {
 
   @override
   List<Object?> get props => [id, firstName, lastName, email, createdAt];
+
+  @override
+  int compareTo(other) => id.uuid.compareTo(other.id.uuid);
 }

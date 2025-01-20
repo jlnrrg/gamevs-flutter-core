@@ -34,10 +34,12 @@ class Fight extends Equatable with FightMappable {
 }
 
 @MappableClass(generateMethods: GenerateMethods.all & ~GenerateMethods.equals)
-class FightResult extends Equatable with FightResultMappable {
+class FightResult extends Equatable
+    with FightResultMappable
+    implements Comparable {
   const FightResult({
-    required this.id,
-    required this.player,
+    required this.fightId,
+    required this.user,
     this.rank,
     this.time,
     this.points,
@@ -45,8 +47,8 @@ class FightResult extends Equatable with FightResultMappable {
     required this.updatedAt,
   });
 
-  final UuidValue id;
-  final FightPlayer player;
+  final UuidValue fightId;
+  final User user;
 
   // result
   final int? rank;
@@ -56,11 +58,14 @@ class FightResult extends Equatable with FightResultMappable {
   final DateTime updatedAt;
 
   @override
-  List<Object?> get props => [id, player, rank, time, points, createdAt];
+  List<Object?> get props => [fightId, user.id, rank, time, points, createdAt];
+
+  @override
+  int compareTo(other) => user.compareTo(other.user);
 }
 
 @MappableClass(generateMethods: GenerateMethods.all & ~GenerateMethods.equals)
-class FightKill extends Equatable with FightKillMappable {
+class FightKill extends Equatable with FightKillMappable implements Comparable {
   const FightKill({
     required this.id,
     this.killer,
@@ -77,4 +82,7 @@ class FightKill extends Equatable with FightKillMappable {
 
   @override
   List<Object?> get props => [id, killer, victim, createdAt];
+
+  @override
+  int compareTo(other) => updatedAt.compareTo(other.updatedAt);
 }
