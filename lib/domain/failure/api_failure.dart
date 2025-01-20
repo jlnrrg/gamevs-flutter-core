@@ -12,3 +12,7 @@ sealed class ApiFailure with ApiFailureMappable {
 
 @MappableClass()
 class NoDataFailure with NoDataFailureMappable implements ApiFailure {}
+
+class PlayerExistsFailure with NoDataFailureMappable implements ApiFailure {}
+
+class PlayerNotFoundFailure with NoDataFailureMappable implements ApiFailure {}

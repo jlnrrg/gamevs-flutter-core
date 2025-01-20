@@ -25,9 +25,12 @@ final class StageClear extends StageEvent {}
 typedef _Emitter = Emitter<BlocState<List<Stage<Enum>>>>;
 
 class StageBloc extends Bloc<StageEvent, BlocState<List<Stage>>> {
-  StageBloc(
-      {required this.fightId, required this.stageRepository, this.stageLimit})
-      : super(BlocState(value: <Stage>[])) {
+  StageBloc({
+    required this.fightId,
+    required this.stageRepository,
+    this.stageLimit,
+    List<Stage> initialValue = const <Stage>[],
+  }) : super(BlocState(value: initialValue)) {
     on<_StageInit>(_init);
     on<_StageDbUpdate>(_stateUpdate);
     on<StageToggle>(_toggle,
@@ -63,7 +66,7 @@ class StageBloc extends Bloc<StageEvent, BlocState<List<Stage>>> {
       });
 
   Future<void> _toggle(StageToggle event, _Emitter emit) async {
-    final valueBackup = state.value;
+    final valueBackup = List.of(state.value);
     final exists = state.value.contains(event.stage);
 
     List<Stage<Enum>> newList = [];
@@ -93,7 +96,8 @@ class StageBloc extends Bloc<StageEvent, BlocState<List<Stage>>> {
   }
 
   Future<void> _clear(StageClear _, _Emitter emit) async {
-    final valueBackup = state.value;
+    final valueBackup = List.of(state.value);
+
     emit(BlocState(value: [], isOptimisticUI: true));
     final eith = await stageRepository.updateStages(fightId, []).run();
     final failure = eith.getLeft().toNullable();
