@@ -119,3 +119,142 @@ class _BlocStateCopyWithImpl<$R, $Out, T>
           Then<$Out2, $R2> t) =>
       _BlocStateCopyWithImpl($value, $cast, t);
 }
+
+class PlayerStateMapper extends ClassMapperBase<PlayerState> {
+  PlayerStateMapper._();
+
+  static PlayerStateMapper? _instance;
+  static PlayerStateMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = PlayerStateMapper._());
+      FightPlayerMapper.ensureInitialized();
+      ApiFailureMapper.ensureInitialized();
+      UserMapper.ensureInitialized();
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'PlayerState';
+
+  static List<FightPlayer> _$player(PlayerState v) => v.player;
+  static const Field<PlayerState, List<FightPlayer>> _f$player =
+      Field('player', _$player);
+  static bool _$isOptimisticUI(PlayerState v) => v.isOptimisticUI;
+  static const Field<PlayerState, bool> _f$isOptimisticUI = Field(
+      'isOptimisticUI', _$isOptimisticUI,
+      key: 'isOptimisticUi', opt: true, def: false);
+  static ApiFailure? _$failure(PlayerState v) => v.failure;
+  static const Field<PlayerState, ApiFailure> _f$failure =
+      Field('failure', _$failure, opt: true);
+  static User? _$selectedPlayer(PlayerState v) => v.selectedPlayer;
+  static const Field<PlayerState, User> _f$selectedPlayer =
+      Field('selectedPlayer', _$selectedPlayer, opt: true);
+
+  @override
+  final MappableFields<PlayerState> fields = const {
+    #player: _f$player,
+    #isOptimisticUI: _f$isOptimisticUI,
+    #failure: _f$failure,
+    #selectedPlayer: _f$selectedPlayer,
+  };
+
+  static PlayerState _instantiate(DecodingData data) {
+    return PlayerState(
+        player: data.dec(_f$player),
+        isOptimisticUI: data.dec(_f$isOptimisticUI),
+        failure: data.dec(_f$failure),
+        selectedPlayer: data.dec(_f$selectedPlayer));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static PlayerState fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<PlayerState>(map);
+  }
+
+  static PlayerState fromJson(String json) {
+    return ensureInitialized().decodeJson<PlayerState>(json);
+  }
+}
+
+mixin PlayerStateMappable {
+  String toJson() {
+    return PlayerStateMapper.ensureInitialized()
+        .encodeJson<PlayerState>(this as PlayerState);
+  }
+
+  Map<String, dynamic> toMap() {
+    return PlayerStateMapper.ensureInitialized()
+        .encodeMap<PlayerState>(this as PlayerState);
+  }
+
+  PlayerStateCopyWith<PlayerState, PlayerState, PlayerState> get copyWith =>
+      _PlayerStateCopyWithImpl(this as PlayerState, $identity, $identity);
+  @override
+  String toString() {
+    return PlayerStateMapper.ensureInitialized()
+        .stringifyValue(this as PlayerState);
+  }
+}
+
+extension PlayerStateValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, PlayerState, $Out> {
+  PlayerStateCopyWith<$R, PlayerState, $Out> get $asPlayerState =>
+      $base.as((v, t, t2) => _PlayerStateCopyWithImpl(v, t, t2));
+}
+
+abstract class PlayerStateCopyWith<$R, $In extends PlayerState, $Out>
+    implements ClassCopyWith<$R, $In, $Out> {
+  ListCopyWith<$R, FightPlayer,
+      FightPlayerCopyWith<$R, FightPlayer, FightPlayer>> get player;
+  UserCopyWith<$R, User, User>? get selectedPlayer;
+  $R call(
+      {List<FightPlayer>? player,
+      bool? isOptimisticUI,
+      ApiFailure? failure,
+      User? selectedPlayer});
+  PlayerStateCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
+}
+
+class _PlayerStateCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, PlayerState, $Out>
+    implements PlayerStateCopyWith<$R, PlayerState, $Out> {
+  _PlayerStateCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<PlayerState> $mapper =
+      PlayerStateMapper.ensureInitialized();
+  @override
+  ListCopyWith<$R, FightPlayer,
+          FightPlayerCopyWith<$R, FightPlayer, FightPlayer>>
+      get player => ListCopyWith($value.player, (v, t) => v.copyWith.$chain(t),
+          (v) => call(player: v));
+  @override
+  UserCopyWith<$R, User, User>? get selectedPlayer =>
+      $value.selectedPlayer?.copyWith.$chain((v) => call(selectedPlayer: v));
+  @override
+  $R call(
+          {List<FightPlayer>? player,
+          bool? isOptimisticUI,
+          Object? failure = $none,
+          Object? selectedPlayer = $none}) =>
+      $apply(FieldCopyWithData({
+        if (player != null) #player: player,
+        if (isOptimisticUI != null) #isOptimisticUI: isOptimisticUI,
+        if (failure != $none) #failure: failure,
+        if (selectedPlayer != $none) #selectedPlayer: selectedPlayer
+      }));
+  @override
+  PlayerState $make(CopyWithData data) => PlayerState(
+      player: data.get(#player, or: $value.player),
+      isOptimisticUI: data.get(#isOptimisticUI, or: $value.isOptimisticUI),
+      failure: data.get(#failure, or: $value.failure),
+      selectedPlayer: data.get(#selectedPlayer, or: $value.selectedPlayer));
+
+  @override
+  PlayerStateCopyWith<$R2, PlayerState, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _PlayerStateCopyWithImpl($value, $cast, t);
+}

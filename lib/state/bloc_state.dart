@@ -30,3 +30,25 @@ class BlocState<T> extends Equatable with BlocStateMappable<T> {
     ];
   }
 }
+
+@MappableClass(generateMethods: GenerateMethods.all & ~GenerateMethods.equals)
+class PlayerState extends Equatable with PlayerStateMappable {
+  const PlayerState(
+      {required this.player,
+      this.isOptimisticUI = false,
+      this.failure,
+      this.selectedPlayer});
+
+  final User? selectedPlayer;
+  final List<FightPlayer> player;
+  final bool isOptimisticUI;
+  final ApiFailure? failure;
+
+  @override
+  List<Object?> get props => [
+        selectedPlayer?.id,
+        List.of(player)..sort(),
+        isOptimisticUI,
+        failure,
+      ];
+}

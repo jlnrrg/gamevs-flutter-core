@@ -4,7 +4,7 @@ part 'api_failure.mapper.dart';
 
 @MappableClass()
 sealed class ApiFailure with ApiFailureMappable {
-  static ApiFailure fromError(Object o, StackTrace) {
+  static ApiFailure fromError(Object o, StackTrace _) {
     if (o is ApiFailure) return o;
     // TODO(jln): add mapping
     throw UnimplementedError();
@@ -14,6 +14,22 @@ sealed class ApiFailure with ApiFailureMappable {
 @MappableClass()
 class NoDataFailure with NoDataFailureMappable implements ApiFailure {}
 
-class PlayerExistsFailure with NoDataFailureMappable implements ApiFailure {}
+@MappableClass()
+class PlayerExistsFailure
+    with PlayerExistsFailureMappable
+    implements ApiFailure {}
 
-class PlayerNotFoundFailure with NoDataFailureMappable implements ApiFailure {}
+@MappableClass()
+class PlayerNotFoundFailure
+    with PlayerNotFoundFailureMappable
+    implements ApiFailure {}
+
+@MappableClass()
+class LastEntryNotAllowedToBeRemovedFailure
+    with LastEntryNotAllowedToBeRemovedFailureMappable
+    implements ApiFailure {}
+
+@MappableClass()
+class NothingSelectedFailure
+    with NothingSelectedFailureMappable
+    implements ApiFailure {}
