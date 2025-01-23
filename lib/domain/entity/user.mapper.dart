@@ -22,15 +22,10 @@ class UserMapper extends ClassMapperBase<User> {
 
   static UuidValue _$id(User v) => v.id;
   static const Field<User, UuidValue> _f$id = Field('id', _$id);
-  static String? _$firstName(User v) => v.firstName;
-  static const Field<User, String> _f$firstName =
-      Field('firstName', _$firstName, opt: true);
-  static String? _$lastName(User v) => v.lastName;
-  static const Field<User, String> _f$lastName =
-      Field('lastName', _$lastName, opt: true);
-  static String? _$email(User v) => v.email;
-  static const Field<User, String> _f$email =
-      Field('email', _$email, opt: true);
+  static String _$name(User v) => v.name;
+  static const Field<User, String> _f$name = Field('name', _$name);
+  static String _$email(User v) => v.email;
+  static const Field<User, String> _f$email = Field('email', _$email);
   static DateTime _$createdAt(User v) => v.createdAt;
   static const Field<User, DateTime> _f$createdAt =
       Field('createdAt', _$createdAt);
@@ -41,8 +36,7 @@ class UserMapper extends ClassMapperBase<User> {
   @override
   final MappableFields<User> fields = const {
     #id: _f$id,
-    #firstName: _f$firstName,
-    #lastName: _f$lastName,
+    #name: _f$name,
     #email: _f$email,
     #createdAt: _f$createdAt,
     #updatedAt: _f$updatedAt,
@@ -51,8 +45,7 @@ class UserMapper extends ClassMapperBase<User> {
   static User _instantiate(DecodingData data) {
     return User(
         id: data.dec(_f$id),
-        firstName: data.dec(_f$firstName),
-        lastName: data.dec(_f$lastName),
+        name: data.dec(_f$name),
         email: data.dec(_f$email),
         createdAt: data.dec(_f$createdAt),
         updatedAt: data.dec(_f$updatedAt));
@@ -96,8 +89,7 @@ abstract class UserCopyWith<$R, $In extends User, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   $R call(
       {UuidValue? id,
-      String? firstName,
-      String? lastName,
+      String? name,
       String? email,
       DateTime? createdAt,
       DateTime? updatedAt});
@@ -113,24 +105,21 @@ class _UserCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, User, $Out>
   @override
   $R call(
           {UuidValue? id,
-          Object? firstName = $none,
-          Object? lastName = $none,
-          Object? email = $none,
+          String? name,
+          String? email,
           DateTime? createdAt,
           DateTime? updatedAt}) =>
       $apply(FieldCopyWithData({
         if (id != null) #id: id,
-        if (firstName != $none) #firstName: firstName,
-        if (lastName != $none) #lastName: lastName,
-        if (email != $none) #email: email,
+        if (name != null) #name: name,
+        if (email != null) #email: email,
         if (createdAt != null) #createdAt: createdAt,
         if (updatedAt != null) #updatedAt: updatedAt
       }));
   @override
   User $make(CopyWithData data) => User(
       id: data.get(#id, or: $value.id),
-      firstName: data.get(#firstName, or: $value.firstName),
-      lastName: data.get(#lastName, or: $value.lastName),
+      name: data.get(#name, or: $value.name),
       email: data.get(#email, or: $value.email),
       createdAt: data.get(#createdAt, or: $value.createdAt),
       updatedAt: data.get(#updatedAt, or: $value.updatedAt));

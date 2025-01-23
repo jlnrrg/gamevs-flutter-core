@@ -8,22 +8,20 @@ part 'user.mapper.dart';
 class User extends Equatable with UserMappable implements Comparable {
   const User({
     required this.id,
-    this.firstName,
-    this.lastName,
-    this.email,
+    required this.name,
+    required this.email,
     required this.createdAt,
     required this.updatedAt,
   });
 
   final UuidValue id;
-  final String? firstName;
-  final String? lastName;
-  final String? email;
+  final String name;
+  final String email;
   final DateTime createdAt;
   final DateTime updatedAt;
 
   @override
-  List<Object?> get props => [id, firstName, lastName, email, createdAt];
+  List<Object?> get props => [id, name, email, createdAt];
 
   @override
   int compareTo(other) => id.uuid.compareTo(other.id.uuid);
