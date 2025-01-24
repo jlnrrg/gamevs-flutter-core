@@ -14,6 +14,7 @@ export './domain/repository/player_repository.dart';
 export './domain/repository/stage_repository.dart';
 export './l10n/generated/l10n.dart';
 export 'state/bloc_state.dart';
+export 'state/bloc_utils.dart';
 export 'state/player_bloc.dart';
 export 'state/stage_bloc.dart';
 export 'state/bloc_observer.dart';
