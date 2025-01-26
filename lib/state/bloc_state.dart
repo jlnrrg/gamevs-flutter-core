@@ -51,4 +51,7 @@ class PlayerState extends Equatable with PlayerStateMappable {
         isOptimisticUI,
         failure,
       ];
+
+  List<User> isSelected(Character c) =>
+      player.where((p) => p.character.contains(c)).map((p) => p.user).toList();
 }
