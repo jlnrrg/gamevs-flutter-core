@@ -97,7 +97,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
 
     final limit = playerLimit;
     final listByLimit =
-        limit != null ? (state.player..sort()).take(limit - 1) : state.player;
+        limit != null ? (valueBackup..sort()).take(limit - 1) : state.player;
     final newList = {...listByLimit, newPlayer}.toList();
 
     emit(PlayerState(
