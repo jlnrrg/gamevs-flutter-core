@@ -1,6 +1,5 @@
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:equatable/equatable.dart';
-import 'package:gamevs_core/domain/entity/character.dart';
 import 'package:gamevs_core/domain/entity/game.dart';
 import 'package:gamevs_core/domain/entity/rules.dart';
 import 'package:gamevs_core/domain/entity/user.dart';

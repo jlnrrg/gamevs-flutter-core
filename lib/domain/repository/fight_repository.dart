@@ -11,8 +11,6 @@ abstract interface class IFightRepository {
   TaskEither<ApiFailure, Unit> deleteFight(UuidValue fightId);
 
   // Watch Simple
-  TaskEither<ApiFailure, Stream<Either<ApiFailure, core.Rules>>> watchRules(
-      UuidValue fightId);
   TaskEither<ApiFailure, Stream<Either<ApiFailure, List<core.FightKill>>>>
       watchKills(UuidValue fightId);
   TaskEither<ApiFailure, Stream<Either<ApiFailure, List<core.FightResult>>>>
@@ -27,7 +25,6 @@ abstract interface class IFightRepository {
   */
 
   // Update
-  TaskEither<ApiFailure, Unit> updateRules(UuidValue fightId, core.Rules rules);
   TaskEither<ApiFailure, Unit> updateKills(
       UuidValue fightId, List<core.FightKill> kills);
   TaskEither<ApiFailure, Unit> updateResults(
